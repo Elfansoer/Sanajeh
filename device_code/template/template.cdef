@@ -1,0 +1,6 @@
+
+int SampleClass_SampleClass_update();
+int parallel_new_SampleClass(int object_num);
+int AllocatorInitialize();
+int SampleClass_do_all(void (*pf)(int, int, int));
+int AllocatorUninitialize();
