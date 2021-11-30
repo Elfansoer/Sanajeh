@@ -8,7 +8,10 @@ sys.path.append(parentdir + '/src')
 from sanajeh import PyCompiler
 
 compiler: PyCompiler = PyCompiler("examples/nbody/nbody.py", "nbody")
+print("compile")
 compiler.compile()
 #compiler.printCppAndHpp()
 #compiler.printCdef()
+print("build")
 compiler.build()
+print("finish")

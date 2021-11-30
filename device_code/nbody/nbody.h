@@ -18,26 +18,26 @@ static const float kDampeningFactor = 0.05;
 
 class Body : public AllocatorT::Base {
 	public:
-		declare_field_types(Body, float, float, float, float, float, float, float)
-		Field<Body, 0> pos_x;
-		Field<Body, 1> pos_y;
-		Field<Body, 2> vel_x;
-		Field<Body, 3> vel_y;
-		Field<Body, 4> force_x;
-		Field<Body, 5> force_y;
-		Field<Body, 6> mass;
+		declare_field_types(Body, curandState, float, float, float, float, float, float, float)
+		Field<Body, 0> random_state_;
+		Field<Body, 1> pos_x;
+		Field<Body, 2> pos_y;
+		Field<Body, 3> vel_x;
+		Field<Body, 4> vel_y;
+		Field<Body, 5> force_x;
+		Field<Body, 6> force_y;
+		Field<Body, 7> mass;
 	
-		__device__ Body(float px, float py, float vx, float vy, float fx, float fy, float m);
 		__device__ Body(int idx);
 		__device__ void compute_force();
 		__device__ void apply_force(Body* other);
-		__device__ void body_update();
-		void _do(void (*pf)(float, float, float, float, float, float, float));
+		__device__ void update();
+		void _do(void (*pf)(int, float, float, float, float, float, float, float));
 };
 
-extern "C" int Body_do_all(void (*pf)(float, float, float, float, float, float, float));
+extern "C" int Body_do_all(void (*pf)(int, float, float, float, float, float, float, float));
 extern "C" int Body_Body_compute_force();
-extern "C" int Body_Body_body_update();
+extern "C" int Body_Body_update();
 extern "C" int parallel_new_Body(int object_num);
 extern "C" int AllocatorInitialize();
 

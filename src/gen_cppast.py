@@ -301,6 +301,7 @@ class GenCppAstVisitor(ast.NodeVisitor):
                 return cpp.InitializerList(self.__node_path[-2].super_class, args)
             """
             # case: super()._(args) in the method that initializes the object
+            # print("debug <{}>".format(self.__node_path[-1].name))
             if hasattr(node.func, "attr") and node.func.attr == self.__node_path[-2].super_class \
             and self.__node_path[-1].name == self.__node_path[-2].name and hasattr(node.func.value, "func") \
             and hasattr(node.func.value.func, "id") and node.func.value.func.id == "super":

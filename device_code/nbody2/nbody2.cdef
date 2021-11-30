@@ -1,0 +1,6 @@
+
+int Projectile_Projectile_update();
+int parallel_new_Projectile(int object_num);
+int AllocatorInitialize();
+int Projectile_do_all(void (*pf)(float, float));
+int AllocatorUninitialize();

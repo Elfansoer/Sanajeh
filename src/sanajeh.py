@@ -128,6 +128,7 @@ class PyCompiler:
     self.file_path = pth
     self.file_name = nme
     self.dir_path = "device_code/{}".format(self.file_name)
+    print("PyCompiler init <{}> <{}> <{}>".format(self.file_path,self.file_name,self.dir_path))
 
   def compile(self):
     source = open(self.file_path, encoding="utf-8").read()
